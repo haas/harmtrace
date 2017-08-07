@@ -1,0 +1,120 @@
+name:                   HarmTrace
+version:                2.2.1
+synopsis:               Harmony Analysis and Retrieval of Music
+description:            HarmTrace: Harmony Analysis and Retrieval of Music
+                        with Type-level Representations of Abstract
+                        Chords Entities
+                        .
+                        We present HarmTrace, a system
+                        for automatically analysing the harmony of music
+                        sequences. HarmTrace is described in the paper:
+                        .
+                        * Jose Pedro Magalhaes and W. Bas de Haas.
+                        /Experience Report: Functional Modelling of Musical Harmony./
+                        International Conference on Functional Programming,
+                        2011.
+                        <http://dreixel.net/research/pdf/fmmh.pdf>
+
+copyright:              (c) 2010--2013 Universiteit Utrecht,
+                            2012--2013 University of Oxford
+                            2016 Chordify BV
+license:                GPL-3
+license-file:           LICENSE
+author:                 W. Bas de Haas and Jose Pedro Magalhaes
+stability:              experimental
+maintainer:             bash@cs.uu.nl, jpm@cs.ox.ac.uk
+homepage:               http://www.cs.uu.nl/wiki/GenericProgramming/HarmTrace
+category:               Music
+build-type:             Simple
+cabal-version:          >= 1.6
+tested-with:            GHC == 7.0.3, GHC == 7.2.1, GHC == 7.4.1, GHC == 7.6.1,
+                        GHC == 7.10
+
+extra-source-files:     README.md
+                        CHANGELOG.md
+
+executable harmtrace
+  hs-source-dirs:       src
+  other-modules:        Constants
+                        Replace
+
+                        HarmTrace.HarmTrace
+
+                        HarmTrace.Audio.Annotate
+                        HarmTrace.Audio.AnnotationParser
+                        HarmTrace.Audio.DataParser
+                        HarmTrace.Audio.ChromaChord
+                        HarmTrace.Audio.ChromaKey
+                        HarmTrace.Audio.Key
+                        HarmTrace.Audio.Evaluation
+                        HarmTrace.Audio.Statistical
+                        HarmTrace.Audio.VectorNumerics
+
+                        HarmTrace.Base.Instances
+
+                        HarmTrace.HAnTree.HAn
+                        HarmTrace.HAnTree.HAnParser
+                        HarmTrace.HAnTree.PostProcess
+                        HarmTrace.HAnTree.ToHAnTree
+                        HarmTrace.HAnTree.Tree
+
+                        HarmTrace.IO.Errors
+                        HarmTrace.IO.Main
+                        HarmTrace.IO.PrintTree
+                        HarmTrace.IO.Common
+                        HarmTrace.IO.Match
+                        HarmTrace.IO.Parse
+                        HarmTrace.IO.Recognise
+                        HarmTrace.IO.FeatExtract
+                        HarmTrace.IO.Downsample
+                        HarmTrace.IO.BasePaths
+                        HarmTrace.IO.Wave
+
+                        HarmTrace.Matching.Alignment
+                        HarmTrace.Matching.HChord
+                        HarmTrace.Matching.Sim
+                        HarmTrace.Matching.SimpleChord
+                        HarmTrace.Matching.Standard
+                        HarmTrace.Matching.GuptaNishimura
+
+                        HarmTrace.Models.Models
+                        HarmTrace.Models.Parser
+                        HarmTrace.Models.ChordTokens
+                        HarmTrace.Models.TypeLevel
+
+                        HarmTrace.Models.Jazz.Instances
+                        HarmTrace.Models.Jazz.Main
+                        HarmTrace.Models.Jazz.Model
+
+                        HarmTrace.Models.Pop.Instances
+                        HarmTrace.Models.Pop.Main
+                        HarmTrace.Models.Pop.Model
+
+  main-is:              Main.hs
+  build-depends:        base >= 4.2 && < 5,
+                        template-haskell >=2.4 && < 2.11,
+                        mtl,
+                        directory,
+                        filepath,
+                        array,
+                        parallel >= 3,
+                        Diff == 0.1.*,
+                        cmdargs >= 0.10.1,
+                        process >= 1.0,
+                        uu-parsinglib >= 2.7.4,
+                        ListLike >= 3.0.1,
+                        vector >= 0.7,
+                        deepseq,
+                        matrix >= 0.3.4,
+                        sox >= 0.2.2.2,
+                        instant-generics >= 0.6,
+                        binary >= 0.6.4,
+                        HarmTrace-Base < 1.2,
+                        -- statistics >= 0.13,
+                        ghc-prim >= 0.2
+
+  ghc-options:          -Wall
+                        -O2 -fno-spec-constr-count -funbox-strict-fields
+                        -fcontext-stack=50
+                        -threaded -feager-blackholing -rtsopts
+
