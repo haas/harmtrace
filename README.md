@@ -47,8 +47,6 @@ the difficulties is that HarmTrace currently only build on a relatively old
 version of GHC, namely 7.10. Provided that you have intalled a Haskell system 
 and pulled this repository, Stack should take care of it:
 
-`stack init --solver --install-ghc`
-
 `stack build`
 
 # Running HarmTrace
